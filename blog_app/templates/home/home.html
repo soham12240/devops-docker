@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+
+{% block mainblock %}
+<div class="main-container">
+
+    
+    <div class="content-list">
+        <h1>Blogs</h1>
+        {%for i in blog_list%}
+        <a href="/blog/{{i.id}}">
+        <div class="content">
+            <h3 class="content-title">{{i.title}}</h3>
+            <p class="content-text">{{i.content | truncatechars:255}}</p>
+        </div>
+        </a>
+        {% endfor %}
+
+    </div>
+    
+</div>
+
+
+{% endblock %}
+
+
+{% block styleblock %}
+<style>
+    .main-container {
+        
+        width: 100%;
+    }
+
+    a{ 
+        text-decoration: none;
+        color: black;
+     }
+
+
+
+    .content {
+        margin-top: 10px;
+        padding: 16px;
+        width: 800px;
+        border: 2px solid rgb(255, 129, 83);
+        cursor: pointer;
+    }
+
+    .content:hover {
+
+        background-color: rgb(240, 218, 210);
+    }
+
+    .content-title {
+        font-size: 30px;
+    }
+
+    .content-text {
+        padding: 10px 0px;
+    }
+
+
+    .content-list {
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+
+</style>
+{% endblock %}

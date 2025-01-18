@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+
+
+{% block mainblock %}
+<div class="main-container">
+
+  <form class="login-box" action="/signup" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Signup</h1>
+    <input class="login-input" type="text" placeholder="username" name="username" required>
+    <input class="login-input" type="email" placeholder="email" name="email" required>
+    <input class="login-input" type="password" placeholder="password" name="password" required>
+    <button class="login-button">submit</button>
+    <p class="account-create">Aready have account? <a href="#">LOGIN</a></p>
+  </form>
+</div>
+{% endblock %}
+
+
+
+{% block styleblock %}
+<style>
+  .main-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-content: center;
+  }
+.account-create {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+  h1 {
+    margin: 10px;
+    text-align: center;
+  }
+
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid rgb(255, 115, 0);
+  }
+
+  .login-input {
+    padding: 10px;
+    margin: 10px 10px;
+    font-size: 20px;
+  }
+
+  .login-button {
+    border: 2px solid white;
+    background-color: rgb(255, 102, 0);
+    color: white;
+    padding: 10px;
+    margin: 10px 30px;
+    font-size: 20px;
+  }
+</style>
+{% endblock %}

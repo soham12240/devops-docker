@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+
+    #navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    #navbar a {
+        float: right;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    #navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    #navbar a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    </style>
+    {% block styleblock %}
+    {% endblock %}
+    <title>Document</title>
+</head>
+
+<body>
+    {% if show_nav %}
+    <div id="navbar">
+        <a href="/logout">Logout</a>
+        <a href="/create_blog_view">Add Blog</a>
+    </div>
+    {% endif %}
+    {% block mainblock %}
+    {% endblock %}
+</body>
+
+</html>

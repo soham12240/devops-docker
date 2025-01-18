@@ -1,0 +1,101 @@
+{% extends "index.html" %}
+
+{% block mainblock %}
+<div class="main-container">
+    <a href="/home">Back to home</a>
+    <h1 class="blog-title">{{blog.title}}</h1>
+    <p class="blog-content">{{blog.content}}</p>
+
+    <hr>
+    <h2>Comments</h2>
+    <form action="/comment_on_blog/{{blog.id}}" method="post" enctype="multipart/form-data" class="comment_input_block">
+        {% csrf_token %}
+        <textarea class="comment-input-box" cols="30" rows="6"
+            placeholder="Enter the comment...." name="message" required></textarea>
+
+        <button class="comment-post-button">post</button>
+    </form>
+
+    {% for comment in comments %}
+    <div class="comment-block">
+        <div class="user-profile">
+            <div class="profile-name">{{comment.user.username}}</div>
+            <div class="profile-date">{{comment.create_date| date:"M d, Y"}}</div>
+        </div>
+        <div class="comment-message">
+            {{comment.message}}
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}
+
+
+{% block styleblock %}
+<style>
+    .profile-name {
+        font-weight: bold;
+    }
+
+    .profile-date {
+        color: grey;
+    }
+    .comment_input_block {
+        display: flex;
+        flex-direction: column;
+    }
+    .comment-message {
+        font-size: 16px;
+        color: rgb(61, 61, 99);
+        margin-top: 20px;
+    }
+
+    .comment-block {
+        padding: 10px;
+        border: 1px solid grey;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .main-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .blog-title {
+        font-size: 50px;
+        padding: 10px;
+    }
+
+    .blog-content {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .comment-input-box {
+        font-size: 20px;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    .comment-post-button {
+        background-color: orangered;
+        width: 100px;
+        border: none;
+        padding: 5px;
+        color: white;
+        font-size: medium;
+    }
+</style>
+{% endblock %}

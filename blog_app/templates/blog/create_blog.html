@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block mainblock %}
+
+    <form class="main-container" action="/create_blog_view" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" class="input-title" name="title" placeholder="Title">
+        <textarea class="input-content" name="content" cols="30" rows="30" placeholder="Enter the content"></textarea>
+        <button class="create-blog-button">submit</button>
+    </form>
+
+
+
+{% endblock %}
+
+
+{% block styleblock %}
+<style>
+    .main-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .input-title {
+        padding: 10px;
+        margin: 20px 20px;
+        font-size: 20px;
+    }
+
+    .input-content {
+        margin: 20px 20px;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .create-blog-button {
+        padding: 10px;
+        margin: 20px 20px;
+        background-color: rgb(247, 98, 39);
+        border: none;
+        color: white;
+        font-size: 20px;
+    }
+</style>
+{% endblock %}

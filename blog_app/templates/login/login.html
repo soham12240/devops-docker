@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+
+{% block mainblock %}
+<div class="main-container">
+
+  <form class="login-box" method="post" enctype="multipart/form-data" action="/login">
+    {% csrf_token %}
+    <h1>Login</h1>
+    {% if error %}
+    <p class="error-message">{{error}}</p>
+    {% endif %}
+    <input class="login-input" name="email" type="email" placeholder="email" required>
+    <input class="login-input" name="password" type="password" placeholder="password" required>
+    <button class="login-button">submit</button>
+    <p class="account-create">Need and account? <a href="/signup">SIGNUP</a></p>
+  </form>
+</div>
+
+
+{% endblock %}
+
+
+{% block styleblock %}
+<style>
+  .error-message {
+    background-color: rgb(252, 234, 234);
+    color: red;
+    padding: 10px;
+    margin: 10px 10px;
+    font-size: 20px;
+  }
+  .main-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-content: center;
+  }
+.account-create {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+  h1 {
+    margin: 10px;
+    text-align: center;
+  }
+
+  .login-box {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid rgb(255, 115, 0);
+  }
+
+  .login-input {
+    padding: 10px;
+    margin: 10px 10px;
+    font-size: 20px;
+  }
+
+  .login-button {
+    border: 2px solid white;
+    background-color: rgb(255, 102, 0);
+    color: white;
+    padding: 10px;
+    margin: 10px 30px;
+    font-size: 20px;
+  }
+</style>
+{% endblock %}
